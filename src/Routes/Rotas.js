@@ -13,6 +13,8 @@ import Perfil from '../Pages/Perfil';
 import Inserir from '../Pages/Inserir';
 
 
+
+
 const Tab = createBottomTabNavigator();
 
 export default function Rotas() {
@@ -30,9 +32,9 @@ export default function Rotas() {
                     headerShown: false,
                     tabBarShowLabel: false,
                     tabBarStyle: {
-                        backgroundColor: '#191919',
+                        backgroundColor: 'white',
                     },
-                    tabBarActiveTintColor: "white"
+                    tabBarActiveTintColor: "#00B6B7"
                 }}
             >
                 <Tab.Screen

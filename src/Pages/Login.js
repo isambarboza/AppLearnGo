@@ -19,26 +19,26 @@ export default function Login() {
             <Image source={require("../../assets/logo.png")} style={css.logo} />
             <TextInput
                 inputMode="email"
-                placeholder="Email"
+                placeholder="E-mail do usuário"
                 style={css.input}
                 value={email}
                 onChangeText={(digitado) => setEmail(digitado)}
-                placeholderTextColor="white"
+                placeholderTextColor="#808080"
             />
             <TextInput
                 inputMode="text"
-                placeholder="Password"
+                placeholder="Senha"
                 secureTextEntry={true}
                 style={css.input}
                 value={senha}
                 onChangeText={(digitado) => setSenha(digitado)}
-                placeholderTextColor="white"
+                placeholderTextColor="#808080"
             />
             <View style={css.forgot}>
                 <Text style={css.forgotText}>Esqueceu a senha?</Text>
             </View>
             <TouchableOpacity style={css.btnLogin} onPress={RealizaLogin}>
-                <Text style={css.btnLoginText}>Log In</Text>
+                <Text style={css.btnLoginText}>Entrar</Text>
             </TouchableOpacity>
             {error &&
                 <View style={css.error}>
@@ -55,41 +55,43 @@ const css = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         alignContent: "center",
-        backgroundColor: "#191919"
+        backgroundColor: "white"
     },
     logo: {
-        width: "60%",
+        width: "90%",
         resizeMode: "contain"
     },
     input: {
         width: "90%",
         height: 50,
-        borderRadius: 10,
+        borderRadius: 8,
         marginBottom: 15,
         padding: 15,
-        backgroundColor: "#262626",
-        color: "white"
+        backgroundColor: "#FFCA00",
+        
     },
     forgot: {
-        width: "90%",
+        width: "80%",
         marginTop: 10,
         justifyContent: "flex-end",
         alignItems: "flex-end",
     },
     forgotText: {
-        color: "#0195fd",
-        fontWeight: "bold"
+        color: "#808080",
+        fontWeight: "bold",
+      
+
     },
     btnLogin: {
         width: "90%",
         height: 50,
-        borderWidth: 1,
-        borderRadius: 10,
+        borderRadius: 8,
         marginTop: 30,
-        backgroundColor: "#0195fd"
+        backgroundColor: "#00B6B7",
+       
     },
     btnLoginText: {
-        color: "white",
+       color: "#272323",
         lineHeight: 45,
         textAlign: "center",
         fontSize: 15,
@@ -101,7 +103,7 @@ const css = StyleSheet.create({
         marginTop: 30
     },
     errorText: {
-        color: "white",
+        color: "#272323",
         textAlign: "center"
     }
 });
