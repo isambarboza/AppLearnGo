@@ -1,60 +1,70 @@
 import { View, Text, StyleSheet, FlatList } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Produto from '../Components/Produto';
-import Stories from '../Components/Stories';
+import Detalhes from '../Components/Detalhes';
 
 
 export default function Home() {
 
-  const [produtos, setProdutos] = useState([]);
+  const [animais, setAnimais] = useState([]);
 
-  async function getProdutos() {
-    await fetch('https://fakestoreapi.com/products', {
+  async function getAnimais() {
+    await fetch('http://10.139.75.23:5251/api/Animais/GetAllAnimais/', {
       method: 'GET',
       headers: {
         'content-type': 'application/json'
       }
     })
       .then(res => res.json())
-      .then(json => setProdutos(json))
+      .then(json => setAnimais(json))
       .catch(err => console.log(err))
   }
+  
 
   useEffect(() => {
-    getProdutos();
+    getAnimais();
   }, [])
 
   return (
     <View style={css.container}>
-      {produtos ?
+      {animais ?
         <>
-          <Stories produtos={produtos} />
           <FlatList
-            data={produtos}
-            renderItem={({ item }) => <Produto title={item.title} price={item.price} image={item.image} description={item.description} category={item.category} rating={item.rating} />}
+            data={animais}
+            renderItem={({ item }) => 
+          
+            <Produto
+            animalNome={item.animalNome} 
+            animalRaca={item.animalRaca} 
+            animalTipo={item.animalTipo} 
+            animalCor={item.animalCor} 
+            animalSexo={item.animalSexo} 
+            animalObservacao={item.animalObservacao} 
+            animalFoto={item.animalFoto}
+            animalDtDesaparecimento={item.animalDtDesaparecimento} 
+            animalDtEncontro={item.animalDtEncontro}
+            animalStatus={item.animalStatus}
+             />}
             keyExtractor={(item) => item.id}
-            contentContainerStyle={{ height: (produtos.length * 600) + 110 }}
+            contentContainerStyle={{ height: (animais.length * 600) + 110 }}
           />
         </>
         :
-        <Text style={css.text}>Carregando produtos...</Text>
+        <Text style={css.text}>Carregando animais...</Text>
       }
     </View>
   )
 }
 const css = StyleSheet.create({
   container: {
-    backgroundColor: "#191919",
+    backgroundColor: "white",
     flexGrow: 1,
-    color: "white",
+    color: "black",
     justifyContent: "center",
     alignItems: "center"
   },
   text: {
-    color: "white"
+    color: "black"
   },
-  stories: {
-    width: "100%",
-    height: 100
-  }
+  
 })
