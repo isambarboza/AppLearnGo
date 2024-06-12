@@ -91,7 +91,7 @@ const css = StyleSheet.create({
        
     },
     btnLoginText: {
-       color: "#272323",
+       color: "black",
         lineHeight: 45,
         textAlign: "center",
         fontSize: 15,

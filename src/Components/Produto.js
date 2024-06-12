@@ -10,29 +10,17 @@ export default function Animal({ animalNome, animalRaca,animalTipo, animalCor, a
             <View style={css.boxImage}>
                 <Image source={{ uri: animalFoto }} style={css.imagem}/>
             </View>
-            <View style={css.descriptionBox}>
-                <Text style={css.descriptionText}>{animalObservacao}</Text>
             </View>
-            <View style={css.categoryBox}>
-                <Text style={css.categoryText}>{animalRaca}</Text>
-                <Text style={css.categoryText}>{animalTipo}</Text>
-                <Text style={css.categoryText}>{animalCor}</Text>
-                <Text style={css.categoryText}>{animalSexo}</Text>
-            </View>
-            <TouchableOpacity style={css.detailsButton}>
-                <Text style={css.detailsButtonText}>Detalhes</Text>
-            </TouchableOpacity>
-        </View>
-    )
+    );
 }
 
 const css = StyleSheet.create({
     container: {
-        width: "98%",
-        height: 600,
+        minWidth: "100%",
+        width: "100%",
+        height: 500,
         backgroundColor: "#FFCA00",
-        marginTop:40,
-        borderRadius: 8,
+        borderRadius: 10,
         marginBottom: 20,
         padding: 10,
         shadowColor: "#000",
@@ -51,7 +39,13 @@ const css = StyleSheet.create({
         marginBottom: 10,
         paddingLeft: 5
     },
-    
+    circleAvatar: {
+        width: 30,
+        height: 30,
+        borderRadius: 50,
+        backgroundColor: "white",
+        marginRight: 10
+    },
     title: {
         color: "#333",
         fontSize: 18,
@@ -60,7 +54,7 @@ const css = StyleSheet.create({
     boxImage: {
         width: "100%",
         height: 390,
-        borderRadius: 8,
+        borderRadius: 10,
         overflow: "hidden"
     },
     imagem: {
@@ -76,7 +70,7 @@ const css = StyleSheet.create({
         borderRadius: 10,
     },
     descriptionText: {
-        color: "#808080",
+        color: "#333",
         textAlign: "justify"
     },
     categoryBox: {
@@ -87,20 +81,22 @@ const css = StyleSheet.create({
         justifyContent: "space-between"
     },
     categoryText: {
-        color: "black",
+        color: "#333",
         fontSize: 14,
         fontWeight: "bold"
     },
-    detailsButton: {
+    botao: {
         marginTop: 10,
-        paddingVertical: 10,
-        backgroundColor: "#00B6B7",
-        borderRadius: 5,
-        alignItems: "center",
-    },
-    detailsButtonText: {
-        color: "black",
-        fontSize: 16,
-        fontWeight: "bold",
-    },
-})
+        backgroundColor:"white",
+        color:"white",
+        alignItems:"center",
+        height:30,
+        width:200,
+        padding:5,
+        marginLeft:80,
+        elevation:8,
+        marginBottom:50
+      
+    }
+
+});
