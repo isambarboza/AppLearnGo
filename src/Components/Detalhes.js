@@ -13,7 +13,7 @@ export default function Detalhes({ handle, item, animais, animalFoto }) {
   const [error, setError] = useState(false);
 
   async function SalvarObservacao() {
-    await fetch('http://10.139.75.23:5251/api/Observacoes/InsertObservacao', {
+         await fetch('http://10.139.75.23:5251/api/Observacoes/insertObservacao', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -22,18 +22,19 @@ export default function Detalhes({ handle, item, animais, animalFoto }) {
         observacoesDescricao: observacoesDescricao,
         observacoesLocal: observacoesLocal,
         observacoesData: observacoesData,
-        animaisId: animaisId,
-        usuarioId: usuarioId
+        animaisId: item.animaisId,
+        usuarioId: item.usuarioId
       })
     })
       .then(res => res.json())
+      .then(json => console.log(json))
       .then(json => {
-        setObservacoesDescricao(json.ObservacoesDescricao);
-        setObservacoesLocal(json.ObservacoesLocal);
-        setObservacoesData(json.ObservacoesData);
-        setAnimaisId(json.animaisId);
-        setUsuarioId(json.usuarioId);
-      })
+         setObservacoesDescricao("");
+         setObservacoesLocal("");
+         setObservacoesData("");
+         setAnimaisId("");
+         setUsuarioId("");
+       })
       .catch(err => console.log(err));
   }
 
@@ -54,7 +55,7 @@ export default function Detalhes({ handle, item, animais, animalFoto }) {
           <Text style={css.campo}>{item.animalObservacao}</Text>
           <Text style={css.campo}>{item.animalDtDesaparecimento}</Text>
           <Text style={css.campo}>{item.animalDtEncontro}</Text>
-          <Text style={css.campo}>{item.animalStatus}</Text>
+          <Text style={css.campo}>{item.animalStatus}</Text> 
           <View style={css.botao}>
             <TouchableOpacity onPress={() => handle(false)} >
               <Text style={css.voltar}>Voltar</Text>

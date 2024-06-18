@@ -52,15 +52,7 @@ export default function Rotas() {
 
                 />
                
-                <Tab.Screen
-                    name="Perfil"
-                    component={Perfil}
-                    options={{
-                        tabBarIcon: ({ color, size }) => (
-                            <MaterialCommunityIcons name="account-circle" color={color} size={size} />
-                        ),
-                    }}
-                />
+               
             </Tab.Navigator>
         </NavigationContainer>
     )

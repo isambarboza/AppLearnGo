@@ -1,25 +1,45 @@
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image, Button } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { AuthContext } from '../Context/AuthContext';
+import Inserir from './Perfil';
 
 export default function Login() {
 
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
-
+    const [cadastroScreen, setCadastroScreen] = useState(false)
     const { Login, error } = useContext(AuthContext);
 
     function RealizaLogin() {
-       Login( email, senha );
+        Login(email, senha);
     }
 
+    function Teste() {
+        setCadastroScreen(true)
+    }
+    function Voltar()
+    {
+        setCadastroScreen(false)
+    }
+
+
+    if (cadastroScreen) {
+        return (
+            <>
+                <Inserir />
+                <TouchableOpacity style={css.btnVoltar} onPress={Voltar}>
+                <Text style={css.btnVoltarText}>Voltar</Text>
+            </TouchableOpacity>
+            </>
+        )
+    }
 
     return (
         <ScrollView contentContainerStyle={css.container}>
             <Image source={require("../../assets/logo.png")} style={css.logo} />
             <TextInput
                 inputMode="email"
-                placeholder="E-mail do usuário"
+                placeholder="E-mail do Usuário"
                 style={css.input}
                 value={email}
                 onChangeText={(digitado) => setEmail(digitado)}
@@ -35,14 +55,16 @@ export default function Login() {
                 placeholderTextColor="#808080"
             />
             <View style={css.forgot}>
-                <Text style={css.forgotText}>Esqueceu a senha?</Text>
+                <TouchableOpacity onPress={() => Teste()} >
+                    <Text style={css.forgotText}>Cadastre-se</Text>
+                </TouchableOpacity>
             </View>
             <TouchableOpacity style={css.btnLogin} onPress={RealizaLogin}>
                 <Text style={css.btnLoginText}>Entrar</Text>
             </TouchableOpacity>
             {error &&
                 <View style={css.error}>
-                    <Text style={css.errorText}>Revise os campos. Tente novamente!</Text>
+                    <Text style={css.errorText}>Revise os campos.Tente novamente!</Text>
                 </View>
             }
         </ScrollView>
@@ -68,7 +90,7 @@ const css = StyleSheet.create({
         marginBottom: 15,
         padding: 15,
         backgroundColor: "#FFCA00",
-        
+
     },
     forgot: {
         width: "80%",
@@ -79,7 +101,7 @@ const css = StyleSheet.create({
     forgotText: {
         color: "#808080",
         fontWeight: "bold",
-      
+
 
     },
     btnLogin: {
@@ -88,10 +110,10 @@ const css = StyleSheet.create({
         borderRadius: 8,
         marginTop: 30,
         backgroundColor: "#00B6B7",
-       
+
     },
     btnLoginText: {
-       color: "black",
+        color: "black",
         lineHeight: 45,
         textAlign: "center",
         fontSize: 15,
@@ -105,5 +127,14 @@ const css = StyleSheet.create({
     errorText: {
         color: "#272323",
         textAlign: "center"
+    },
+    btnVoltarText:{
+    height: 40,
+    width: 100,
+    color: "black",
+    lineHeight: 30,
+    textAlign: "center",
+    fontSize: 15,
+    fontWeight: "bold"
     }
 });
